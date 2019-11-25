@@ -22,7 +22,11 @@
               <label>Cheese</label>
               <input type="checkbox"  value="cheese" v-model="blog.categories">
             </div>
-            <input type="button" value="save blog" v-on:click="submitForm()">
+            <label for="author">Author:</label>
+            <select name="author" id="author" v-model="blog.author">
+              <option v-for="(author, author_key) in authors" :key="author_key">{{ author }}</option>
+            </select>
+            <!-- <input type="button" value="save blog" v-on:click="submitForm()"> -->
         </form>
         <div id="preview">
           <h3>Preview Blog</h3>
@@ -35,6 +39,7 @@
               {{ item }}
             </li>
           </ul>
+          <p>Author: <span id="preview-text">{{ blog.author }}</span></p>
         </div>
         <div></div>
     </div>
@@ -47,8 +52,10 @@ export default {
       blog: {
         title: '',
         content: '',
-        categories: []
+        categories: [],
+        author: ''
       },
+      authors: ['', 'The Net Ninja', 'The Angular Avenger', 'The Vue Vindicator', 'The spell check', 'Mediator the Author']
     }
   },
   methods: {
