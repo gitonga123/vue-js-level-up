@@ -12,6 +12,16 @@
                 cols="30"
                 rows="10">
             </textarea>
+            <div id="checkboxes">
+              <label>Ninjas</label>
+              <input type="checkbox" value="ninjas" v-model="blog.categories" />
+              <label>Wizards</label>
+              <input type="checkbox" value="wizards" v-model="blog.categories">
+              <label>Mario</label>
+              <input type="checkbox" value="mario" v-model="blog.categories">
+              <label>Cheese</label>
+              <input type="checkbox"  value="cheese" v-model="blog.categories">
+            </div>
             <input type="button" value="save blog" v-on:click="submitForm()">
         </form>
         <div id="preview">
@@ -19,6 +29,12 @@
           <p>Blog title: <span id="preview-text">{{ blog.title }}</span></p>
           <p>Blog content:</p>
           <p>{{ blog.content }}</p>
+          <p>Blog Categories:</p>
+          <ul>
+            <li v-for="(item, index) in blog.categories" :key="index">
+              {{ item }}
+            </li>
+          </ul>
         </div>
         <div></div>
     </div>
@@ -30,8 +46,9 @@ export default {
     return {
       blog: {
         title: '',
-        content: ''
-      }
+        content: '',
+        categories: []
+      },
     }
   },
   methods: {
@@ -70,5 +87,11 @@ input[type="text"], textarea{
 h3{
     margin-top: 10px;
 }
-
+#checkboxes input{
+    display: inline-block;
+    margin-right: 10px;
+}
+#checkboxes label{
+    display: inline-block;
+}
 </style>
