@@ -28,6 +28,27 @@ export default {
             this.daniels.shift(); 
         }
     },
+    beforeCreate() {
+        alert('beforeCreate');
+    },
+    created() {
+        alert('created');
+    },
+    beforeMount() {
+        alert('Before Mounted');
+    },
+    mounted() {
+        alert('Am mounted');
+    },
+    beforeUpdate() {
+        alert('Before Updated');
+    },
+    updated() {
+        alert("Updated");
+    },
+    destroyed() {
+        alert('destroyed');
+    },
 }
 </script>
 
