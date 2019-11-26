@@ -8,13 +8,6 @@ Vue.use(VueResource);
 export const bus = new Vue();
 
 // Custom directives
-Vue.directive('rainbow', {
-  bind(el, binding, vnode) {
-    el.style.color = "#" + Math.random().toString().slice(2, 8);
-    binding;
-    vnode;
-  }
-});
 
 Vue.directive('theme', {
   bind(el, binding, vnode) {
@@ -31,13 +24,6 @@ Vue.directive('theme', {
   }
 });
 
-// filters
-Vue.filter('to-uppercase', (value) => {
-  return value.toUpperCase();
-});
-Vue.filter('snippet', (value) => {
-  return value.slice(0, 100) + '...';
-})
 
 new Vue({
   render: h => h(App),
