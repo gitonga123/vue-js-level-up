@@ -2,8 +2,8 @@
     <div v-theme:column="'narrow'" id="list-blogs">
         <h1>All blog Articles</h1>
         <div v-for="(blog, key) in blogs" class="single-blog" :key="key">
-            <h3 v-rainbow>{{ blog.title }}</h3>
-            <article>{{ blog.body }}</article>
+            <h3 v-rainbow>{{ blog.title|to-uppercase }}</h3>
+            <article>{{ blog.body|snippet }}</article>
         </div>
     </div>
 </template>
