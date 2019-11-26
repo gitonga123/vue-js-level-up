@@ -1,47 +1,52 @@
 <template>
     <div id="add-blog">
-        <h2>Add a new Blog Post</h2>
-        <form>
-            <label for="title"></label>
-            <input v-model.lazy="blog.title" type="text" id="title" name="title" required />
-            <label for="content"></label>
-            <textarea
-                v-model.lazy="blog.content"
-                name="blog_content"
-                id="content"
-                cols="30"
-                rows="10">
-            </textarea>
-            <div id="checkboxes">
-              <label>Ninjas</label>
-              <input type="checkbox" value="ninjas" v-model="blog.categories" />
-              <label>Wizards</label>
-              <input type="checkbox" value="wizards" v-model="blog.categories">
-              <label>Mario</label>
-              <input type="checkbox" value="mario" v-model="blog.categories">
-              <label>Cheese</label>
-              <input type="checkbox"  value="cheese" v-model="blog.categories">
+        <div v-if="!submitted">
+            <h2>Add a new Blog Post</h2>
+            <form>
+                <label for="title"></label>
+                <input v-model.lazy="blog.title" type="text" id="title" name="title" required />
+                <label for="content"></label>
+                <textarea
+                    v-model.lazy="blog.content"
+                    name="blog_content"
+                    id="content"
+                    cols="30"
+                    rows="10">
+                </textarea>
+                <div id="checkboxes">
+                  <label>Ninjas</label>
+                  <input type="checkbox" value="ninjas" v-model="blog.categories" />
+                  <label>Wizards</label>
+                  <input type="checkbox" value="wizards" v-model="blog.categories">
+                  <label>Mario</label>
+                  <input type="checkbox" value="mario" v-model="blog.categories">
+                  <label>Cheese</label>
+                  <input type="checkbox"  value="cheese" v-model="blog.categories">
+                </div>
+                <label for="author">Author:</label>
+                <select name="author" id="author" v-model="blog.author">
+                  <option v-for="(author, author_key) in authors" :key="author_key">{{ author }}</option>
+                </select>
+                <button @click.prevent="saveBlog">Add Blog</button>
+            </form>
+            <div id="preview">
+              <h3>Preview Blog</h3>
+              <p>Blog title: <span id="preview-text">{{ blog.title }}</span></p>
+              <p>Blog content:</p>
+              <p>{{ blog.content }}</p>
+              <p>Blog Categories:</p>
+              <ul>
+                <li v-for="(item, index) in blog.categories" :key="index">
+                  {{ item }}
+                </li>
+              </ul>
+              <p>Author: <span id="preview-text">{{ blog.author }}</span></p>
             </div>
-            <label for="author">Author:</label>
-            <select name="author" id="author" v-model="blog.author">
-              <option v-for="(author, author_key) in authors" :key="author_key">{{ author }}</option>
-            </select>
-            <!-- <input type="button" value="save blog" v-on:click="submitForm()"> -->
-        </form>
-        <div id="preview">
-          <h3>Preview Blog</h3>
-          <p>Blog title: <span id="preview-text">{{ blog.title }}</span></p>
-          <p>Blog content:</p>
-          <p>{{ blog.content }}</p>
-          <p>Blog Categories:</p>
-          <ul>
-            <li v-for="(item, index) in blog.categories" :key="index">
-              {{ item }}
-            </li>
-          </ul>
-          <p>Author: <span id="preview-text">{{ blog.author }}</span></p>
+            <div></div>
         </div>
-        <div></div>
+        <div v-else>
+          <h3>Thanks for adding your post</h3>
+        </div>
     </div>
 </template>
 
@@ -55,12 +60,22 @@ export default {
         categories: [],
         author: ''
       },
-      authors: ['', 'The Net Ninja', 'The Angular Avenger', 'The Vue Vindicator', 'The spell check', 'Mediator the Author']
+      authors: ['', 'The Net Ninja', 'The Angular Avenger', 'The Vue Vindicator', 'The spell check', 'Mediator the Author'],
+      submitted: false
     }
   },
   methods: {
-    submitForm: function() {
-      //
+    saveBlog: function() {
+      this.$http.post('https://jsonplaceholder.typicode.com/posts', {
+        title: this.blog.title,
+        body: this.blog.content,
+        userId: 1
+      }).then((data) => {
+        data;
+        this.submitted = true;
+      }).catch((error) => {
+        error;
+      });
     }
   },
 };
