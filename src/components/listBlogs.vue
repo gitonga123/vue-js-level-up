@@ -1,10 +1,9 @@
 <template>
-    <div id="list-blogs">
+    <div v-theme:column="'narrow'" id="list-blogs">
         <h1>All blog Articles</h1>
         <div v-for="(blog, key) in blogs" class="single-blog" :key="key">
-            <h3>{{ blog.title }}</h3>
+            <h3 v-rainbow>{{ blog.title }}</h3>
             <article>{{ blog.body }}</article>
-            <!-- {{ blog }} -->
         </div>
     </div>
 </template>
@@ -20,10 +19,7 @@ export default {
     created() {
         this.$http.get('https://jsonplaceholder.typicode.com/posts')
         .then((data) => {
-            // data.body.forEach(details => {
-            //     this.blogs.push({title: details.title, content: details.body.slice(0, 100)});
-            // });
-            this.blogs = data.body.slice(0, 100);
+            this.blogs = data.body.slice(0, 10);
         }).catch((error) => {
             error;
         });
