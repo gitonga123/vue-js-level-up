@@ -1,5 +1,6 @@
 <template>
     <div>
+        <app-header></app-header>
         <router-view>
             <add-blog></add-blog>
             <list-blogs></list-blogs>
@@ -9,13 +10,15 @@
 
 <script>
 
+import appHeader from './components/Header';
 import addBlog from './components/addBlog';
 import listBlogs from './components/listBlogs';
 
 export default {
     components: {
         'add-blog': addBlog,
-        'list-blogs': listBlogs
+        'list-blogs': listBlogs,
+        'app-header': appHeader
     },
     data() {
         return {
