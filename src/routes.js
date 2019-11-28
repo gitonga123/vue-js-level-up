@@ -1,5 +1,6 @@
 import listBlogs from './components/listBlogs';
 import addBlog from './components/addBlog';
+import showBlog from './components/singleBlog';
 
 export default [
     {
@@ -7,5 +8,8 @@ export default [
     },
     {
         path: '/add', component: addBlog
+    },
+    {
+        path: '/blog/:id', component: showBlog
     }
 ];
