@@ -2,6 +2,7 @@
     <div>
         <!-- <add-blog></add-blog> -->
         <list-blogs></list-blogs>
+        <list-blogs-title></list-blogs-title>
     </div>
 </template>
 
@@ -9,11 +10,13 @@
 
 // import addBlog from './components/addBlog';
 import listBlogs from './components/listBlogs';
+import listBlogsTitle from './components/listBlogsTitle';
 
 export default {
     components: {
         // 'add-blog': addBlog
-        'list-blogs': listBlogs
+        'list-blogs': listBlogs,
+        'list-blogs-title': listBlogsTitle
     },
     data() {
         return {
