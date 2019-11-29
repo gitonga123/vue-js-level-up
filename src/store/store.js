@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-const store = new Vuex.store({
+export const store = new Vuex.Store({
     state: {
         products: [
             { name: 'Banana Skin', price: 200 },
@@ -13,5 +13,3 @@ const store = new Vuex.store({
         ]
     }
 });
-
-export default store;
