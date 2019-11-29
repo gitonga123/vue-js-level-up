@@ -1,27 +1,20 @@
 <template>
     <div>
-        <app-header></app-header>
-        <router-view>
-            <add-blog></add-blog>
-            <list-blogs></list-blogs>
-        </router-view>
+        <product-list-one v-bind:products="products"></product-list-one>
+        <product-list-two v-bind:products="products"></product-list-two>
     </div>
 </template>
 
 <script>
-
-import appHeader from './components/Header';
-import addBlog from './components/addBlog';
-import listBlogs from './components/listBlogs';
-
+import productListOne from './components/productListOne';
+import productListTwo from './components/productListTwo';
 export default {
     components: {
-        'add-blog': addBlog,
-        'list-blogs': listBlogs,
-        'app-header': appHeader
+        'product-list-one': productListOne,
+        'product-list-two': productListTwo,
     },
     data() {
-        return {
+        return { 
             
         }
     },
