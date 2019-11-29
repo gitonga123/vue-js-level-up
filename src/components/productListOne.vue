@@ -12,20 +12,25 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
+
 export default {
     computed: {
         products() {
             return this.$store.state.products;
         },
-        saleProducts() {
-            return this.$store.getters.saleProducts;
-        }
+        ...mapGetters([
+        'saleProducts'
+        ])
     },
     methods: {
-        reducePrice: function(discount) {
-            //this.$store.commit('reducePrice');
-            this.$store.dispatch('reducePrice', discount);
-        }
+        ...mapActions([
+            'reducePrice'
+        ])
+        // reducePrice: function(discount) {
+        //     //this.$store.commit('reducePrice');
+        //     this.$store.dispatch('reducePrice', discount);
+        // }
     }
 }
 </script>
