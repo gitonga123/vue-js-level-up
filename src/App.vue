@@ -1,32 +1,27 @@
 <template>
     <div>
-        <product-list-one></product-list-one>
-        <product-list-two></product-list-two>
+        <app-calculator></app-calculator>
     </div>
 </template>
 
 <script>
-import productListOne from './components/productListOne';
-import productListTwo from './components/productListTwo';
+import Calculator from './components/Calculator';
+
 export default {
     components: {
-        'product-list-one': productListOne,
-        'product-list-two': productListTwo,
+        'app-calculator': Calculator
     },
     data() {
         return { 
-            
+            //
         }
     },
     methods: {
-        
+        //
     },
 };
 </script>
 
 <style>
-body {
-    margin: 0%;
-    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-}
+
 </style>
